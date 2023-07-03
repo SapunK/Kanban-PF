@@ -1,0 +1,8 @@
+rootProject.name = 'kanban'
+
+include 'eao'
+include 'ear'
+include 'ejb'
+include 'ejb-client'
+include 'web'
+

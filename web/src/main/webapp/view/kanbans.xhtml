@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Kanbans</title>
+</h:head>
+
+<h:body>
+	<h:form id="form">
+		<p:commandButton value="Back"
+			style="margin-left: 10%; margin-top: 2%; width: 8%; display: block;" />
+		<p:commandButton value="Add"
+			style="margin-left: 10%; margin-top: 2%; margin-bottom: 3%; width: 8%; display: block;"
+			actionListener="#{kanbanView.dialogUtil.openDialog('addKanban',500,300)}"
+			update="form">
+			<p:ajax event="dialogReturn" update=":form:kanbanTable"
+				listener="#{kanbanView.updateList}" />
+		</p:commandButton>
+
+		<p:outputLabel value="Kanbans" style="margin-left: 10%;" />
+
+		<p:dataTable id="kanbanTable" var="kanban"
+			value="#{kanbanView.kanbanList}" widgetVar="kanbanTable"
+			rowKey="#{kanban.id}" style="width: 80%; margin: auto;">
+			<p:column headerText="Name" style="text-align: center;">
+				<h:outputText value="#{kanban.name}" />
+			</p:column>
+			<p:column headerText="Actions" style="text-align: center;">
+				<p:link value="Edit" />
+				<p:link value="Delete" style="margin-left: 2%;" />
+				<p:link value="Deactivate" style="margin-left: 2%;" />
+			</p:column>
+			<p:column width="7%" style="text-align: center;">
+				<p:button outcome="useKanban" includeViewParams="true" value="Use"
+					styleClass="btn-blue-color">
+					<f:param name="kanbanId" value="#{kanban.id}" />
+				</p:button>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

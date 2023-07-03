@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>KANBAN</title>
+	<h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
+	<h:outputScript name="jquery/jquery.js" library="primefaces" />
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:menu style="margin: 2%;">
+			<p:submenu label="Menu">
+				<p:menuitem value="Kanbans" action="#{homepageView.redirect}"
+					icon="pi pi-star" />
+			</p:submenu>
+		</p:menu>
+	</h:form>
+</h:body>
+
+</html>

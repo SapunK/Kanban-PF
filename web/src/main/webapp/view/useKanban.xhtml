@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+	<h:form id="form">
+		<p:panel class="card">
+			<div class="ui-fluid">
+				<div class="field">
+					<p:commandButton value="Back"
+						style="margin-left: 10%; margin-top: 2%; width: 8%;" onclick="window.history.back();" />
+				</div>
+				<div class="field">
+					<p:commandButton value="Add Task"
+						style="margin-left: 10%; margin-top: 2%; margin-bottom: 3%; width: 8%;"
+						actionListener="#{useKanbanView.addNewTask()}" update="form" />
+					<p:inputText placeholder="a new Task that goes to the first column"
+						value="#{useKanbanView.task}"
+						style="width: 30%; margin-left: 2%; margin-top: 2%; margin-bottom: 3%;" />
+				</div>
+
+				<div class="field">
+					<p:dataTable id="kanbanTable" value="#{useKanbanView.rowList}"
+						var="row" style="width: 80%; margin: auto;" draggableRows="true">
+						<p:column width="5%">
+							<p:commandButton icon="fa fa-arrow-left" actionListener="#{useKanbanView.shiftDataLeft(row)}" update="kanbanTable"/>
+						</p:column>
+						<p:columns value="#{useKanbanView.kanban.columnList}" var="col"
+							headerText="#{col.name}" style="text-align: center;">
+							<h:outputText value="#{useKanbanView.getColData(col, row)}" />
+						</p:columns>
+						<p:column width="5%">
+							<p:commandButton icon="fa fa-arrow-right" actionListener="#{useKanbanView.shiftDataRight(row)}" update="kanbanTable"/>
+						</p:column>
+					</p:dataTable>
+				</div>
+			</div>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

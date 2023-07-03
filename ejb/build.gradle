@@ -1,0 +1,8 @@
+dependencies {
+    implementation group: 'javax', name: 'javaee-api', version: '7.0'
+//    compile group: 'javax.persistence', name: 'persistence-api', version: '1.0'
+    implementation project(':ejb-client')
+    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.5.7.Final'
+//    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.10'
+    implementation project(':eao')
+}

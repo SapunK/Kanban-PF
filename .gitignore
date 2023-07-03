@@ -36,3 +36,9 @@ bin/
 gradle/
 gradlew
 gradlew.bat
+
+# Eclipse
+.classpath
+.project
+.settings/
+

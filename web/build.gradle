@@ -1,0 +1,29 @@
+apply plugin: 'war'
+
+repositories {
+    maven {
+//        url "https://mvnrepository.com/artifact/org.primefaces.themes/delta"
+        url "https://repository.primefaces.org"
+    }
+
+    // Use local repository for primefaces 6.2-SNAPSHOT
+//    mavenLocal()
+}
+
+war {
+    // custom entries for MANIFEST.MF:
+    manifest {
+    }
+}
+
+dependencies {
+    implementation project(':ejb-client')
+    implementation project(':ejb')
+    implementation project(':eao')
+    implementation group: 'org.primefaces', name: 'primefaces', version: '8.0'
+    implementation group: 'org.primefaces.themes', name: 'delta', version: '1.0.10'
+
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    implementation group: 'commons-io', name: 'commons-io', version: '2.8.0'
+
+}

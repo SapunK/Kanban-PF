@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Kanban-board designer</title>
+</h:head>
+
+<h:body>
+	<h:form id="form">
+		<p:panel class="card">
+			<div class="ui-fluid">
+				<div class="field">
+					<p:commandButton value="Save" icon="fa fa-floppy-o"
+						actionListener="#{addKanbanView.addKanban}" style="width: 20%" />
+					<p:inputText id="name" value="#{addKanbanView.kanbanName}"
+						style="width: 30%; margin-left: 10%;" placeholder="Kanban name" />
+				</div>
+
+				<div class="field" style="margin-top: 3%;">
+					<p:commandButton value="Add column" icon="fa fa-floppy-o"
+						actionListener="#{addKanbanView.addColumn}" style="width: 25%"
+						update="form" />
+
+					<p:inputText id="colname" value="#{addKanbanView.newColumnName}"
+						style="width: 30%; margin-left: 5%;" />
+				</div>
+				<div class="field" style="margin-top: 3%;">
+					<p:repeat id="columnList" value="#{addKanbanView.columnList}" var="col">
+						<p:inputText value="#{col.name}" disabled="true" style="width: 15%; margin-left: 2%"/>
+					</p:repeat>
+				</div>
+			</div>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

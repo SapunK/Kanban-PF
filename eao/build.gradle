@@ -1,0 +1,4 @@
+dependencies {
+    implementation group: 'javax', name: 'javaee-api', version: '8.0.1'
+    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.5.7.Final'
+}
